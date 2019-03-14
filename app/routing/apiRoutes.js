@@ -22,20 +22,7 @@ module.exports = function (app) {
 
         //default friend match is the first friend but result will be whoever has the minimum difference in score
         var bestFriendIndex = 0;
-        var minimumDifference = 40;
-
-        for (var i = 0; i < friends.length; i++) {
-            var totalDifference = 0;
-            for (var j = 0; j < friends[i].scores.length; j++) {
-                var difference = Math.abs(user.scores[j] - friends[i].scores[j]);
-                totalDifference += difference;
-            }
-
-            if (totalDifference < minimumDifference) {
-                bestFriendIndex = i;
-                minimumDifference = totalDifference;
-            }
-        }
+    
         friends.push(user);
 
         res.json(friends[bestFriendIndex]);
